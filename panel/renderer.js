@@ -3,8 +3,10 @@ const { ipcRenderer } = require('electron');
 let globalSettings = {};
 
 ipcRenderer.on("scoreboardChange", (event, args) => {
-	updateScoreboard(args);
-	updateScoreEdit(args);
+	const scoreboard = sortScoreboard(args);
+	console.log(args, scoreboard);
+	updateScoreboard(scoreboard);
+	updateScoreEdit(scoreboard);
 })
 
 ipcRenderer.on("usersChange", (event, args) => {
@@ -24,6 +26,20 @@ ipcRenderer.on("addresses", (event, args) => {
 })
 
 ipcRenderer.send('requestInitialScoreboard')
+
+function sortScoreboard(scoreboard) {
+	const sortBy = globalSettings["sort-by"];
+	console.log(globalSettings);
+
+	if (sortBy === "score") {
+		scoreboard.sort((a, b) => b.score - a.score)
+		console.log(scoreboard);
+	} else if (sortBy === "name") {
+		scoreboard.sort((a, b) => a.name.localeCompare(b.name))
+		console.log("name");
+	}
+	return scoreboard
+}
 
 navigate(localStorage.getItem("menu"));
 

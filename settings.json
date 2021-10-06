@@ -1,9 +1,10 @@
 {
     "settings": {
+        "sort-by": "default",
         "port": "3000"
     },
     "styles": {
-        "layout-style": "bottom",
+        "layout-style": "standard",
         "primary-background": "#BBBBBBFF",
         "secondary-background": "#888888FF",
         "primary-text": "#000000FF",

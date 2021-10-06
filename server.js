@@ -35,7 +35,7 @@ io.on('connection', (socket) => {
 	io.emit("scoreboardChange", db.getData("/scoreboard"))
 	io.emit("stylesChange", db.getData("/styles"))
 
-	socket.on("editScore", ({name, value}) => {
+	socket.on("editScore", ({ name, value }) => {
 		editScore(name, value);
 	})
 });
@@ -52,4 +52,8 @@ function updateScoreboard() {
 	io.emit("scoreboardChange", db.getData("/scoreboard"))
 }
 
-module.exports = { updateStyles, updateScoreboard, setWindow }
+function updateSettings(settings) {
+	io.emit("settingsChange", settings)
+}
+
+module.exports = { updateStyles, updateScoreboard, updateSettings, setWindow }

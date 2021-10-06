@@ -3,7 +3,7 @@ const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 
 const db = require("./db");
-const { updateStyles, updateScoreboard, setWindow } = require("./server");
+const { updateStyles, updateScoreboard, updateSettings, setWindow } = require("./server");
 
 function createWindow() {
 	// Create the browser window.
@@ -133,9 +133,9 @@ function addUser(name) {
 }
 
 ipcMain.on('requestInitialScoreboard', (event, arg) => {
+	event.reply("settingsChange", db.getData("/settings"));
 	event.reply("scoreboardChange", db.getData("/scoreboard"));
 	event.reply("stylesChange", db.getData("/styles"));
-	event.reply("settingsChange", db.getData("/settings"));
 	event.reply("addresses", getAddresses());
 })
 
@@ -166,6 +166,8 @@ ipcMain.on('updateStyles', (event, arg) => {
 
 ipcMain.on('updateSettings', (event, arg) => {
 	db.push("/settings", arg);
-	app.relaunch()
-	app.exit()
+	updateSettings(arg);
+	updateStyles();
+	updateScoreboard();
+	event.reply("settingsChange", arg);
 })

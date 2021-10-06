@@ -58,42 +58,48 @@
 				</div>
 				<div class="">
 					<label for="primary-background">primary-background:</label>
-					<input class="input" onchange="sendStyles(event)" data-jscolor="{format:'hexa'}" name="primary-background"
+					<input class="input" onchange="sendStyles()" data-jscolor="{format:'hexa'}" name="primary-background"
 						value="#888888">
 				</div>
 				<div class="">
 					<label for="secondary-background">secondary-background:</label>
-					<input class="input" onchange="sendStyles(event)" data-jscolor="{format:'hexa'}" name="secondary-background"
+					<input class="input" onchange="sendStyles()" data-jscolor="{format:'hexa'}" name="secondary-background"
 						value="#bbbbbb">
 				</div>
 				<div class="">
 					<label for="primary-text">primary-text:</label>
-					<input class="input" onchange="sendStyles(event)" data-jscolor="{format:'hexa'}" name="primary-text"
+					<input class="input" onchange="sendStyles()" data-jscolor="{format:'hexa'}" name="primary-text"
 						value="#000000">
 				</div>
 				<div class="">
 					<label for="secondary-text">secondary-text:</label>
-					<input class="input" onchange="sendStyles(event)" data-jscolor="{format:'hexa'}" name="secondary-text"
+					<input class="input" onchange="sendStyles()" data-jscolor="{format:'hexa'}" name="secondary-text"
 						value="#000000">
 				</div>
 				<div class="">
 					<label for="primary-text-size">primary-text-size:</label>
-					<input class="input" onchange="sendStyles(event)" type="number" name="primary-text-size" value="36">
+					<input class="input" onchange="sendStyles()" type="number" name="primary-text-size" value="36">
 				</div>
 				<div class="">
 					<label for="secondary-text-size">secondary-text-size:</label>
-					<input class="input" onchange="sendStyles(event)" type="number" name="secondary-text-size" value="36">
+					<input class="input" onchange="sendStyles()" type="number" name="secondary-text-size" value="36">
 				</div>
 			</div>
 			<div class="program">
 				<h2>Program</h2>
 				<div class="">
-					<label for="port">Port:</label>
-					<input class="input" type="number" name="port" value="">
+					<label for="sort-by">Sort by:</label>
+					<select class="input" onchange="sendSettings()" type="" name="sort-by">
+						<option value="default">default</option>
+						<option value="name">name</option>
+						<option value="score">score</option>
+					</select>
 				</div>
 				<div class="">
-					<input class="input" onclick="sendSettings()" type="submit" name="restart" value="Restart to save">
+					<label for="port">Port:</label>
+					<input class="input" onchange="sendSettings()" type="number" name="port" value="">
 				</div>
+				<p>Restart the app for the port to take effect</p>
 			</div>
 		</div>
 	</div>

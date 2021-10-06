@@ -1,10 +1,17 @@
 const socket = io();
 
+let globalSettings = {};
+
 socket.on("scoreboardChange", updateScoreboard);
 
 socket.on("stylesChange", updateStyle);
 
+socket.on("settingsChange", settings => {
+	globalSettings = settings;
+})
+
 function updateScoreboard(scoreboard) {
+	scoreboard = sortScoreboard(scoreboard)
 	const elements = document.createDocumentFragment();
 	for (let i = 0; i < scoreboard.length; i++) {
 		const div = document.createElement("div");
@@ -35,4 +42,15 @@ function updateStyle(styles) {
 		else
 			document.documentElement.style.setProperty('--' + style, value);
 	}
+}
+
+function sortScoreboard(scoreboard) {
+	const sortBy = globalSettings["sort-by"];
+
+	if (sortBy === "score") {
+		scoreboard.sort((a, b) => b.score - a.score);
+	} else if (sortBy === "name") {
+		scoreboard.sort((a, b) => a.name.localeCompare(b.name));
+	}
+	return scoreboard
 }
