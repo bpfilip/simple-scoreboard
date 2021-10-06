@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+	<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+	<title>Simple-Scoreboard</title>
+	<link rel="stylesheet" href="style.css">
+	<script>
+		document.documentElement.style.setProperty('--primary-background', '#888');
+		document.documentElement.style.setProperty('--secondary-background', '#bbb');
+		document.documentElement.style.setProperty('--primary-text', '#000');
+		document.documentElement.style.setProperty('--secondary-text', '#000');
+		document.documentElement.style.setProperty('--text-size', '36' + 'px');
+	</script>
+	<script defer src="./renderer.js"></script>
+	<script src="lib/jscolor.js"></script>
+</head>
+
+<body>
+	<div class="sidebar">
+		<img onclick="navigate(0)" src="img/scoreboard.svg">
+		<img onclick="navigate(1)" src="img/clipboard.svg">
+		<img onclick="navigate(2)" src="img/users.svg">
+		<img onclick="navigate(3)" src="img/settings.svg">
+		<img onclick="navigate(4)" src="img/screen.svg">
+	</div>
+	<div class="content scoreboard-content hidden">
+		<h1>Scoreboard</h1>
+
+		<div id="scoreboard">
+		</div>
+	</div>
+	<div class="content scores-content hidden">
+		<h1>Scores</h1>
+
+		<div id="scores"></div>
+		<div id="scoreLog"></div>
+	</div>
+	<div class="content users-content hidden">
+		<h1>Users</h1>
+
+		<div id="users"></div>
+	</div>
+	<div class="content settings-content hidden">
+		<h1>Settings</h1>
+
+		<div id="settings">
+			<div class="styles">
+				<h2>Styles</h2>
+				<div class="">
+					<label for="layout-style">layout-style:</label>
+					<select class="input" onchange="sendStyles(event)" type="" name="layout-style">
+						<option value="standard">standard</option>
+						<option value="bottom">bottom</option>
+					</select>
+				</div>
+				<div class="">
+					<label for="primary-background">primary-background:</label>
+					<input class="input" onchange="sendStyles(event)" data-jscolor="{format:'hexa'}" name="primary-background"
+						value="#888888">
+				</div>
+				<div class="">
+					<label for="secondary-background">secondary-background:</label>
+					<input class="input" onchange="sendStyles(event)" data-jscolor="{format:'hexa'}" name="secondary-background"
+						value="#bbbbbb">
+				</div>
+				<div class="">
+					<label for="primary-text">primary-text:</label>
+					<input class="input" onchange="sendStyles(event)" data-jscolor="{format:'hexa'}" name="primary-text"
+						value="#000000">
+				</div>
+				<div class="">
+					<label for="secondary-text">secondary-text:</label>
+					<input class="input" onchange="sendStyles(event)" data-jscolor="{format:'hexa'}" name="secondary-text"
+						value="#000000">
+				</div>
+				<div class="">
+					<label for="primary-text-size">primary-text-size:</label>
+					<input class="input" onchange="sendStyles(event)" type="number" name="primary-text-size" value="36">
+				</div>
+				<div class="">
+					<label for="secondary-text-size">secondary-text-size:</label>
+					<input class="input" onchange="sendStyles(event)" type="number" name="secondary-text-size" value="36">
+				</div>
+			</div>
+			<div class="program">
+				<h2>Program</h2>
+				<div class="">
+					<label for="port">Port:</label>
+					<input class="input" type="number" name="port" value="">
+				</div>
+				<div class="">
+					<input class="input" onclick="sendSettings()" type="submit" name="restart" value="Restart to save">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="content panels-content hidden">
+		<h1>Panels</h1>
+
+		<div id="panels">
+			<div class="">
+				<h2>Scoreboard</h2>
+				<p>Det er højst sandsynligt den øverste, <br />prøv en af de andre hvis det ikke virker.</p>
+				<div class="addresses" id="addresses-scoreboard">
+				</div>
+			</div>
+			<div class="">
+				<h2>Score panels</h2>
+				<p>Det er højst sandsynligt den øverste, <br />prøv en af de andre hvis det ikke virker.</p>
+				<div class="addresses" id="addresses-panel">
+				</div>
+			</div>
+		</div>
+		<div class="help">
+			<p>For at få scoreboardet ind i OBS skal du oprette en Browser source.</p>
+			<img src="img/help1.png" alt="">
+			<p>I URL feltet skal du indtaste addressen fra ovenover. Her kan du også ændre på størrelsen af
+				scoreboardet. Det er bedre at gøre den lidt for stor her og sætte skrift størrelsen op under
+				indstillinger i kontrol panelet, og så ikke hive den størrer når den er kommet ind på skærmen i OBS.</p>
+			<img src="img/help2.png" alt="">
+			<p>For at undgå at det bliver pixeleret er det bedst ikke at gøre den alt for stor her, men bruge højde og
+				bredte i egenskaber. Her kan du også rykke rundt på scoreboardet, for at placere den det rigtige sted på
+				skærmen.</p>
+			<img src="img/help3.png" alt="">
+		</div>
+	</div>
+</body>
+
+</html>

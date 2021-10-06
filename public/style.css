@@ -1,0 +1,61 @@
+body {
+	margin: 0px;
+}
+
+.scoreItem {
+	font-size: var(--primary-text-size);
+	padding: 5px;
+}
+
+.scoreItem:nth-child(even) {
+	background-color: var(--primary-background);
+	color: var(--primary-text);
+}
+
+.scoreItem:nth-child(odd) {
+	background-color: var(--secondary-background);
+	color: var(--secondary-text);
+}
+
+.score {
+	float: right;
+}
+
+.bottom {
+	display: flex;
+	justify-content: center;
+	/* align-items: flex-end; */
+	/* height: 100%; */
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+
+.bottom .scoreItem {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: max-content;
+	flex: 1;
+}
+
+.bottom .scoreItem:nth-child(even) {
+	background-color: var(--primary-background);
+	color: var(--primary-text);
+}
+
+.bottom .scoreItem:nth-child(odd) {
+	background-color: var(--secondary-background);
+	color: var(--secondary-text);
+	
+}
+
+.bottom .scoreItem .name {
+	font-size: var(--primary-text-size);
+	text-align: center;
+}
+
+.bottom .scoreItem .score {
+	font-size: var(--secondary-text-size);
+}

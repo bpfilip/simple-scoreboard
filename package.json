@@ -1,0 +1,28 @@
+{
+  "devDependencies": {
+    "electron": "^15.1.0",
+    "electron-installer-windows": "^3.0.0",
+    "electron-packager": "^15.4.0",
+    "electronmon": "^2.0.2"
+  },
+  "name": "simple-scoreboard",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "electronmon .",
+    "build": "electron-packager . simple-scoreboard --platform win32 --arch x64 --out dist/ --overwrite --icon=./logo.ico",
+    "setup": "electron-installer-windows --src dist/simple-scoreboard-win32-x64/ --dest dist/installers/"
+  },
+  "author": "FBP_Coding",
+  "license": "ISC",
+  "description": "A simple to use scoreboard",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "electron-squirrel-startup": "^1.0.0",
+    "express": "^4.17.1",
+    "node-json-db": "^1.4.1",
+    "simple-json-db": "^1.2.3",
+    "socket.io": "^4.2.0"
+  }
+}

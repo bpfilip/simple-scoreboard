@@ -1,0 +1,216 @@
+body {
+	margin: 0px;
+	display: grid;
+	grid-template-columns: 70px auto;
+	grid-template-rows: 100%;
+}
+
+.scoreItem {
+	font-size: var(--text-size);
+	padding: 5px;
+}
+
+.scoreItem:nth-child(even) {
+	background-color: var(--primary-background);
+	color: var(--primary-text);
+}
+
+.scoreItem:nth-child(odd) {
+	background-color: var(--secondary-background);
+	color: var(--secondary-text);
+}
+
+.scoreItem .score {
+	float: right;
+}
+
+.bottom {
+	display: flex;
+	justify-content: center;
+	/* align-items: flex-end; */
+	/* height: 100%; */
+	/* position: absolute; */
+	/* bottom: 0px; */
+	/* left: 0px;
+	right: 0px; */
+	/* max-width: fit-content !important; */
+}
+
+.bottom .scoreItem {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: max-content;
+	flex: 1;
+}
+
+.bottom .scoreItem:nth-child(even) {
+	background-color: var(--primary-background);
+	color: var(--primary-text);
+}
+
+.bottom .scoreItem:nth-child(odd) {
+	background-color: var(--secondary-background);
+	color: var(--secondary-text);
+	
+}
+
+.bottom .scoreItem .name {
+	font-size: var(--primary-text-size);
+	text-align: center;
+}
+
+.bottom .scoreItem .score {
+	font-size: var(--secondary-text-size);
+}
+
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	background-color: #555;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.sidebar img {
+	width: 32px;
+	margin: 10px;
+}
+
+.scoreboard-content {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.scoreboard-content #scoreboard {
+	width: 100%;
+	max-width: 500px;
+	/* flex-basis: 500px;
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column; */
+}
+
+.hidden {
+	display: none !important;
+}
+
+.content {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.user {
+	display: flex;
+	/* flex-direction: column; */
+}
+
+.user img {
+	width: 24px;
+}
+
+#scores .score {
+	display: flex;
+	justify-content: space-between;
+	margin: 10px;
+	align-items: center;
+}
+
+#scores .score .name {
+	margin-right: 20px;
+}
+
+#scores .score .editScore {
+	display: flex;
+	justify-content: center;
+}
+
+#scores .score .editScore .score {
+	margin: 5px;
+	width: 4em;
+	/* width: auto; */
+}
+
+#scoreLog {
+	display: flex;
+	flex-direction: column;
+}
+
+#scoreLog .score {
+	display: flex;
+}
+
+#scoreLog .score .name {
+	margin-right: 10px;
+}
+
+.settings-content {
+	display: block;
+	text-align: center;
+}
+
+#settings {
+	display: flex;
+	justify-content: space-around;
+}
+
+#settings .styles {
+	display: flex;
+	flex-direction: column;
+}
+
+#settings .styles div {
+	display: flex;
+	margin: 5px;
+	justify-content: space-between;
+}
+
+#settings .styles div label {
+	margin: 5px;
+	font-size: 18px;
+}
+
+#settings .program {
+	display: flex;
+	flex-direction: column;
+}
+
+#settings .program div {
+	display: flex;
+	margin: 5px;
+	justify-content: space-between;
+}
+
+#settings .program div label {
+	margin: 5px;
+	font-size: 18px;
+}
+
+#panels {
+	display: flex;
+	justify-content: space-around;
+	max-width: 100%;
+	width: 80%;
+}
+
+#panels div .addresses a {
+	display: block;
+}
+
+.panels-content .help img {
+	width: 40%;
+	margin: 5px;
+}
+
+.panels-content .help p {
+	margin: 16px;
+	max-width: 50%;
+}
+
+.panels-content .help {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}

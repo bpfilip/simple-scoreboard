@@ -1,0 +1,36 @@
+{
+    "settings": {
+        "port": "3000"
+    },
+    "styles": {
+        "layout-style": "bottom",
+        "primary-background": "#BBBBBBFF",
+        "secondary-background": "#888888FF",
+        "primary-text": "#000000FF",
+        "secondary-text": "#000000FF",
+        "primary-text-size": "64",
+        "secondary-text-size": "84"
+    },
+    "scoreboard": [
+        {
+            "name": "Filip",
+            "score": 123
+        },
+        {
+            "name": "Filip2",
+            "score": 456
+        },
+        {
+            "name": "Filip3",
+            "score": 789
+        },
+        {
+            "name": "En anden bruger",
+            "score": 0
+        },
+        {
+            "name": "En anden anden bruger",
+            "score": 0
+        }
+    ]
+}

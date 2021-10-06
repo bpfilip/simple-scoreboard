@@ -1,0 +1,40 @@
+body {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+#scores .score {
+	display: flex;
+	justify-content: space-between;
+	margin: 10px;
+	align-items: center;
+}
+
+#scores .score .name {
+	margin-right: 20px;
+}
+
+#scores .score .editScore {
+	display: flex;
+	justify-content: center;
+}
+
+#scores .score .editScore .score {
+	margin: 5px;
+	width: 4em;
+	/* width: auto; */
+}
+
+#scoreLog {
+	display: flex;
+	flex-direction: column;
+}
+
+#scoreLog .score {
+	display: flex;
+}
+
+#scoreLog .score .name {
+	margin-right: 10px;
+}
