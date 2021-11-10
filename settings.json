@@ -14,24 +14,16 @@
     },
     "scoreboard": [
         {
-            "name": "Filip",
+            "name": "User1",
             "score": 123
         },
         {
-            "name": "Filip2",
+            "name": "User2",
             "score": 456
         },
         {
-            "name": "Filip3",
+            "name": "User3",
             "score": 789
-        },
-        {
-            "name": "En anden bruger",
-            "score": 0
-        },
-        {
-            "name": "En anden anden bruger",
-            "score": 0
         }
     ]
 }
