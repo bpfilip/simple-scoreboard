@@ -32,8 +32,8 @@ function editScore(name, value) {
 }
 
 io.on('connection', (socket) => {
-	io.emit("scoreboardChange", db.getData("/scoreboard"))
 	io.emit("stylesChange", db.getData("/styles"))
+	io.emit("scoreboardChange", db.getData("/scoreboard"))
 
 	socket.on("editScore", ({ name, value }) => {
 		editScore(name, value);

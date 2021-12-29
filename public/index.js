@@ -1,14 +1,20 @@
 const socket = io();
 
 let globalSettings = {};
+let globalScoreboard = [];
 
-socket.on("scoreboardChange", updateScoreboard);
+socket.on("scoreboardChange", scoreboard => {
+	globalScoreboard = scoreboard;
+	updateScoreboard(scoreboard)
+});
 
 socket.on("stylesChange", updateStyle);
 
 socket.on("settingsChange", settings => {
 	globalSettings = settings;
 })
+
+let pictureMode = false;
 
 function updateScoreboard(scoreboard) {
 	scoreboard = sortScoreboard(scoreboard)
@@ -25,6 +31,12 @@ function updateScoreboard(scoreboard) {
 		name.innerText = scoreboard[i].name;
 		score.innerText = scoreboard[i].score;
 
+		if (pictureMode) {
+			const img = document.createElement("img");
+			img.src = `profiles/${scoreboard[i].name}.png`;
+			div.appendChild(img);
+		}
+
 		div.appendChild(name);
 		div.appendChild(score);
 		elements.appendChild(div);
@@ -35,13 +47,16 @@ function updateScoreboard(scoreboard) {
 
 function updateStyle(styles) {
 	for (const [style, value] of Object.entries(styles)) {
-		if (style.endsWith("text-size"))
+		if (style.endsWith("-size"))
 			document.documentElement.style.setProperty('--' + style, value + "px");
-		else if (style === "layout-style")
+		else if (style === "layout-style") {
 			document.getElementById("scoreboard").className = value;
+			pictureMode = value.startsWith("picture");
+		}
 		else
 			document.documentElement.style.setProperty('--' + style, value);
 	}
+	updateScoreboard(globalScoreboard);
 }
 
 function sortScoreboard(scoreboard) {

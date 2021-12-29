@@ -45,7 +45,7 @@ navigate(localStorage.getItem("menu"));
 
 function updateStyle(styles) {
 	for (const [style, value] of Object.entries(styles)) {
-		if (style.endsWith("text-size"))
+		if (style.endsWith("-size"))
 			document.documentElement.style.setProperty('--' + style, value + "px");
 		else if (style === "layout-style")
 			document.getElementById("scoreboard").className = value;
@@ -55,7 +55,7 @@ function updateStyle(styles) {
 
 	for (const [style, value] of Object.entries(styles)) {
 		const node = document.querySelector(`#settings > div.styles > div > .input[name="${style}"]`)
-		if (style.endsWith("text-size") || style === "layout-style") {
+		if (style.endsWith("-size") || style === "layout-style") {
 			node.value = value;
 		} else {
 			node.jscolor.fromString(value)
@@ -99,7 +99,17 @@ function updateUserEdit(users) {
 		const user = users[i]
 		const div = document.createElement("div");
 		const name = document.createElement("input");
+		const img = document.createElement("img");
+		const imgInput = document.createElement("input");
 		const trash = document.createElement("img");
+
+		img.src = `../public/profiles/${user.name}.png`;
+		imgInput.type = "button";
+		imgInput.value = "Image";
+
+		imgInput.onclick = ()=>{
+			ipcRenderer.send('filePicker', user.name)
+		}
 
 		div.className = "user";
 		trash.src = "img/trashcan.svg"
@@ -120,6 +130,8 @@ function updateUserEdit(users) {
 		})
 
 		div.appendChild(name);
+		div.appendChild(img);
+		div.appendChild(imgInput);
 		div.appendChild(trash);
 		elements.appendChild(div);
 	}

@@ -52,8 +52,10 @@
 				<div class="">
 					<label for="layout-style">layout-style:</label>
 					<select class="input" onchange="sendStyles(event)" type="" name="layout-style">
-						<option value="standard">standard</option>
-						<option value="bottom">bottom</option>
+						<option value="standard">Standard</option>
+						<option value="bottom">Bottom</option>
+						<option value="picture">Picture</option>
+						<option value="picture-round">Round picture</option>
 					</select>
 				</div>
 				<div class="">
@@ -84,15 +86,19 @@
 					<label for="secondary-text-size">secondary-text-size:</label>
 					<input class="input" onchange="sendStyles()" type="number" name="secondary-text-size" value="36">
 				</div>
+				<div class="">
+					<label for="image-size">image-size:</label>
+					<input class="input" onchange="sendStyles()" type="number" name="image-size" value="36">
+				</div>
 			</div>
 			<div class="program">
 				<h2>Program</h2>
 				<div class="">
 					<label for="sort-by">Sort by:</label>
 					<select class="input" onchange="sendSettings()" type="" name="sort-by">
-						<option value="default">default</option>
-						<option value="name">name</option>
-						<option value="score">score</option>
+						<option value="default">Default</option>
+						<option value="name">Name</option>
+						<option value="score">Score</option>
 					</select>
 				</div>
 				<div class="">

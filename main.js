@@ -1,9 +1,11 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 const path = require('path')
 
 const db = require("./db");
 const { updateStyles, updateScoreboard, updateSettings, setWindow } = require("./server");
+
+const fs = require("fs");
 
 function createWindow() {
 	// Create the browser window.
@@ -170,4 +172,14 @@ ipcMain.on('updateSettings', (event, arg) => {
 	updateStyles();
 	updateScoreboard();
 	event.reply("settingsChange", arg);
+})
+
+ipcMain.on('filePicker', async (event, arg) => {
+	const result = await dialog.showOpenDialog({ properties: ['openFile'] });
+	
+	if (result.canceled) return;
+
+	fs.copyFileSync(result.filePaths[0], path.resolve(__dirname, 'public/profiles/', arg+".png"));
+
+	event.reply("usersChange", db.getData("/scoreboard"));
 })

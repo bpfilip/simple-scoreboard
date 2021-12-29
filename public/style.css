@@ -59,3 +59,40 @@ body {
 .bottom .scoreItem .score {
 	font-size: var(--secondary-text-size);
 }
+
+.picture .scoreItem img {
+	width: var(--image-size);
+}
+
+.picture .scoreItem {
+	display: flex;
+	align-items: center;
+}
+
+.picture .scoreItem .name {
+	margin-left: calc(var(--primary-text-size)*0.2);
+}
+
+.picture .scoreItem .score {
+	margin-left: auto;
+}
+
+.picture-round .scoreItem img {
+	width: var(--image-size);
+	border-radius: 50%;
+	object-fit: cover;
+	aspect-ratio: 1;
+}
+
+.picture-round .scoreItem {
+	display: flex;
+	align-items: center;
+}
+
+.picture-round .scoreItem .name {
+	margin-left: calc(var(--primary-text-size)*0.2);
+}
+
+.picture-round .scoreItem .score {
+	margin-left: auto;
+}
