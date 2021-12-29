@@ -4,7 +4,6 @@ let globalSettings = {};
 
 ipcRenderer.on("scoreboardChange", (event, args) => {
 	const scoreboard = sortScoreboard(args);
-	console.log(args, scoreboard);
 	updateScoreboard(scoreboard);
 	updateScoreEdit(scoreboard);
 })
@@ -29,7 +28,6 @@ ipcRenderer.send('requestInitialScoreboard')
 
 function sortScoreboard(scoreboard) {
 	const sortBy = globalSettings["sort-by"];
-	console.log(globalSettings);
 
 	if (sortBy === "score") {
 		scoreboard.sort((a, b) => b.score - a.score)
@@ -57,7 +55,13 @@ function updateStyle(styles) {
 		const node = document.querySelector(`#settings > div.styles > div > .input[name="${style}"]`)
 		if (style.endsWith("-size") || style === "layout-style") {
 			node.value = value;
-		} else {
+		} else if (style === "animate") {
+			if (value)
+				document.getElementById("animateCheckbox").setAttribute("checked", true);
+			else
+				document.getElementById("animateCheckbox").removeAttribute("checked");
+		}
+		else {
 			node.jscolor.fromString(value)
 		}
 	}
@@ -107,7 +111,7 @@ function updateUserEdit(users) {
 		imgInput.type = "button";
 		imgInput.value = "Image";
 
-		imgInput.onclick = ()=>{
+		imgInput.onclick = () => {
 			ipcRenderer.send('filePicker', user.name)
 		}
 
@@ -219,8 +223,10 @@ function sendStyles() {
 	const styles = {};
 	const nodes = document.querySelectorAll("#settings > div.styles > div > .input");
 	for (let i = 0; i < nodes.length; i++) {
-		console.log(nodes[i], nodes[i].value);
-		styles[nodes[i].name] = nodes[i].value;
+		if (nodes[i].type === "checkbox") {
+			styles[nodes[i].name] = nodes[i].checked;
+		} else
+			styles[nodes[i].name] = nodes[i].value;
 	}
 
 	ipcRenderer.send('updateStyles', styles);

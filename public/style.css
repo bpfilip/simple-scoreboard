@@ -5,6 +5,8 @@ body {
 .scoreItem {
 	font-size: var(--primary-text-size);
 	padding: 5px;
+	position: relative;
+	top: 0px;
 }
 
 .scoreItem:nth-child(even) {
