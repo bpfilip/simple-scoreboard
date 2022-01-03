@@ -3,6 +3,7 @@ body {
 }
 
 .scoreItem {
+	font-family: var(--font);
 	font-size: var(--primary-text-size);
 	padding: 5px;
 	position: relative;

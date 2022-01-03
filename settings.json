@@ -5,6 +5,7 @@
     },
     "styles": {
         "layout-style": "picture-round",
+        "font": "Exo",
         "primary-background": "#BBBBBBFF",
         "secondary-background": "#888888FF",
         "primary-text": "#000000FF",

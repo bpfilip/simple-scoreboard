@@ -53,7 +53,7 @@ function updateStyle(styles) {
 
 	for (const [style, value] of Object.entries(styles)) {
 		const node = document.querySelector(`#settings > div.styles > div > .input[name="${style}"]`)
-		if (style.endsWith("-size") || style === "layout-style") {
+		if (style.endsWith("-size") || style === "layout-style" || style == "font") {
 			node.value = value;
 		} else if (style === "animate") {
 			if (value)
